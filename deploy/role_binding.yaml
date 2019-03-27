@@ -1,0 +1,11 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: sb-operator
+subjects:
+- kind: ServiceAccount
+  name: sb-operator
+roleRef:
+  kind: Role
+  name: sb-operator
+  apiGroup: rbac.authorization.k8s.io
