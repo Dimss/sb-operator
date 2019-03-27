@@ -15,8 +15,7 @@ spec:
       serviceAccountName: sb-operator
       containers:
         - name: sb-operator
-          # Replace this with the built image name
-          image: REPLACE_IMAGE
+          image: docker.io/dimssss/sb-test:0.2
           imagePullPolicy: Always
           env:
             - name: WATCH_NAMESPACE
