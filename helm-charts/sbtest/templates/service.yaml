@@ -1,19 +1,12 @@
-apiVersion: v1
 kind: Service
+apiVersion: v1
 metadata:
-  name: {{ include "sbtest.fullname" . }}
-  labels:
-    app.kubernetes.io/name: {{ include "sbtest.name" . }}
-    helm.sh/chart: {{ include "sbtest.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+  name: {{ .Values.name }}
 spec:
-  type: {{ .Values.service.type }}
-  ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
   selector:
-    app.kubernetes.io/name: {{ include "sbtest.name" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
+    app: {{ .Values.name }}
+  ports:
+  - name: http
+    protocol: TCP
+    port: {{ .Values.service.port }}
+    targetPort: {{ .Values.deployment.containerPort }}
